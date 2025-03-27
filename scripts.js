@@ -79,10 +79,15 @@ function expenseAdd(newExpense){
     //Cria o valor da despesa
     const expenseAmount = document.createElement("span")
     expenseAmount.classList.add("expense-amount")
-    expenseAmount.innerHTML = `<small>R$</small>  ${newExpense.amount.toUpperCase().replace("R$", "")}` //Aqui ele vai formatar o valor que foi digitado no input e vai colocar o símbolo de R$ na frente.
+    expenseAmount.innerHTML = `<small>R$</small>  ${newExpense.amount.toUpperCase().replace("R$", "")}` 
+
+    //Cria o ícone de remover
+    const removeIcon = document.createElement("img")
+    removeIcon.classList.add("remove-icon")
+    removeIcon.setAttribute("src", "img/remove.svg")
 
     //Adiciona as informações no item
-    expenseItem.append(expenseIcon, expenseInfo, expenseAmount)
+    expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeIcon)
     
     //Adicionar o item na lista
     expenseList.append(expenseItem)
