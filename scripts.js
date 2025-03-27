@@ -1,5 +1,8 @@
 //Seleciona os elementos do formulário
+const form = document.querySelector("form");
 const amount = document.getElementById("amount");
+const expense = document.getElementById("expense");
+const category = document.getElementById("category");
 
 // Captura o evento de input para formatar o valor.
 amount.oninput = () =>{
@@ -23,4 +26,21 @@ function formatCurrencyBRL(value){
 
   //Retorna o valor formatado.
   return value
+}
+
+// Captura o evento de submit do formulário para obter os valores.
+form.onsubmit = (event) => {
+  // Previne o comportamento padrão de recarregar a página.
+  event.preventDefault(); // Impede o envio do formulário padrão.
+
+  //Cria um objeto com os detalhes da nova despesa.
+  const newExpense = {
+    id: new Date().getTime(),
+    expense: expense.value,
+    category_id: category.value,
+    category_name: category.options[category.selectedIndex].text, //aqui ele vai buscar as opções do select mas ele vai buscar só a selecionada (por isso é o selectedIndex).
+    created_at: new Date(),
+
+  }
+  // console.log(newExpense)
 }
