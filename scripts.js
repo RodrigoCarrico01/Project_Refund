@@ -42,6 +42,7 @@ form.onsubmit = (event) => {
     expense: expense.value,
     category_id: category.value,
     category_name: category.options[category.selectedIndex].text, //aqui ele vai buscar as opções do select mas ele vai buscar só a selecionada (por isso é o selectedIndex).
+    amount: amount.value,
     created_at: new Date(),
   }
   //Cria a função que vai adicionar o item na lista
@@ -75,8 +76,13 @@ function expenseAdd(newExpense){
     //Adiciona nome e categoria na div das informações da despesa
     expenseInfo.append(expenseName, expenseCategory)
 
+    //Cria o valor da despesa
+    const expenseAmount = document.createElement("span")
+    expenseAmount.classList.add("expense-amount")
+    expenseAmount.innerHTML = `<small>R$</small>  ${newExpense.amount.toUpperCase().replace("R$", "")}` //Aqui ele vai formatar o valor que foi digitado no input e vai colocar o símbolo de R$ na frente.
+
     //Adiciona as informações no item
-    expenseItem.append(expenseIcon, expenseInfo)
+    expenseItem.append(expenseIcon, expenseInfo, expenseAmount)
     
     //Adicionar o item na lista
     expenseList.append(expenseItem)
