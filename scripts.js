@@ -48,6 +48,9 @@ form.onsubmit = (event) => {
 
 function expenseAdd(newExpense){
   try{
+    //Cria o elemento de li para adicionar o item na lista. (ul é a lista)
+    const expenseItem = document.createElement("li")
+    expenseItem.classList.add()
   }catch(error){
     alert("Não foi possível atualizar a lista de despesas")
     console.log(error)
