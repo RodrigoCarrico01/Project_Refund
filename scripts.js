@@ -7,6 +7,7 @@ const category = document.getElementById("category");
 //Seleciona os elementos da lista
 const expenseList = document.querySelector("ul")
 const expenseQuantity = document.querySelector("aside header p span")
+const expensesTotal = document.querySelector("aside header h2")
 
 // Captura o evento de input para formatar o valor.
 amount.oninput = () =>{
@@ -112,8 +113,31 @@ function updateTotals(){
     //Atualiza a quantidade de itens da lista
     expenseQuantity.textContent = `${items.length} ${items.length > 1 ? "despesas" : "despesa"}`
 
-    console.log(items)
+    //Variável para incrementar o total
+    let total = 0
+
+    //percorre cada item (li) da lista(il)
+    for(let item = 0; item < items.length; item++){
+      const itemAmount = items[item].querySelector(".expense-amount")
+
+      //remove caracteres não númericos e substitui a vírgula pelo ponto
+      let value = itemAmount.textContent.replace(/[^\d]/g, "").replace(",", ".")
+      
+      //converter o valor para float
+      value = parseFloat(value)
+
+      // Verifica se o valor é um número válido
+      if(isNaN(value)){
+        return alert ("Não foi possível calcular o total. O valor não parece ser um número")
+      }
+      //Incrementa o valor total.
+      total += Number(value)
+
+    }
+
+    expensesTotal.textContent = total
     
+
   } catch (error) {
     console.log(error)
     alert("Não foi possível atualizar os totais")
