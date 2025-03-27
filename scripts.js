@@ -40,7 +40,16 @@ form.onsubmit = (event) => {
     category_id: category.value,
     category_name: category.options[category.selectedIndex].text, //aqui ele vai buscar as opções do select mas ele vai buscar só a selecionada (por isso é o selectedIndex).
     created_at: new Date(),
-
   }
+  //Cria a função que vai adicionar o item na lista
+  expenseAdd(newExpense)
   // console.log(newExpense)
+}
+
+function expenseAdd(newExpense){
+  try{
+  }catch(error){
+    alert("Não foi possível atualizar a lista de despesas")
+    console.log(error)
+  }
 }
